@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Student auth', () => {
+describe('Header links for Student', () => {
     beforeEach(() => {
         cy.visit("/")
         cy.get("#account-menu > a > span").click()
