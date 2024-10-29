@@ -12,7 +12,7 @@
     "cy:chrome": "cypress run --browser chrome",
     "cy:electron": "cypress run --browser electron",
     "cy:chrome-electron": "npm run cy:chrome && npm run cy:electron",
-    "cy:chrome-electron-record": "npm run cy:chrome --record --key 28f53366-c987-4291-9b5b-7807302d5775 && npm run cy:electron --record --key 28f53366-c987-4291-9b5b-7807302d5775"
+    "cy:chrome-electron-record": "npm run cy:chrome --record --key 9586725e-1e79-47a2-aa99-5e2dafb2f52f && npm run cy:electron --record --key 9586725e-1e79-47a2-aa99-5e2dafb2f52f"
   },
   "repository": {
     "type": "git",
