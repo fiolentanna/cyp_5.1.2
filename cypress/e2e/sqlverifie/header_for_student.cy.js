@@ -18,60 +18,52 @@ describe('Header links for Student', () => {
 
     it('Check "Brand title" link in header', () => {
         cy.visit("/account/settings")
-        cy.get(".brand-title").should('have.text', 'Sqlverifier').click()
+        cy.checkText(".brand-title","Sqlverifier").click()
         cy.url().should("eq", Cypress.config().baseUrl + "?page=1&sort=id,asc")
     })
 
     it('Check "Home" link in header', () => {
         cy.visit("/account/settings")
-        cy.get("#header-tabs > li:nth-child(1) > a > span > span").should("have.text", "Home").click()
+        cy.checkText("#header-tabs > li:nth-child(1) > a > span > span","Home").click()
         cy.url().should("eq", Cypress.config().baseUrl + "?page=1&sort=id,asc")
     })
 
     it('Check "Entities/Task" link in header', () => {
-        cy.get('[data-cy="entity"] > .d-flex').should("have.text", "Entities").click()
+        cy.checkText('[data-cy="entity"] > .d-flex','Entities').click()
         cy.get('[href="/task"] > span').click()
         cy.url().should("eq", Cypress.config().baseUrl + "task?page=1&sort=id,asc")
     })
     
     it('Check "Entities/User Task" link in header', () => {
         cy.visit("/account/settings")
-        cy.get('[data-cy="entity"] > .d-flex').should("have.text", "Entities").click()
+        cy.checkText('[data-cy="entity"] > .d-flex','Entities').click()
         cy.get('[href="/user-task"] > span').click()
         cy.url().should("eq", Cypress.config().baseUrl + "user-task")
     })
 
     it('Check "Swagger/API" link in header', () => {
         cy.visit("/user-task")
-        cy.get('[data-cy="docsMenu"] > .d-flex').should("have.text", "Swagger").click()
+        cy.checkText('[data-cy="docsMenu"] > .d-flex','Swagger').click()
         cy.get('[data-cy="docsMenu"] > .dropdown-menu > .dropdown-item').click()
         cy.url().should("eq", Cypress.config().baseUrl + "docs/docs")
     })
 
     it('Check "Français" switch to language in header', () => {
-        cy.get(":nth-child(4) > .d-flex > span").should("have.text", "English").click()
+        cy.checkText(":nth-child(4) > .d-flex > span","English").click()
         cy.get('[value="fr"]').click()
-        cy.get(":nth-child(4) > .d-flex > span").should("have.text", "Français")
-        cy.get('[data-cy="entity"] > .d-flex').should("have.text", "Entités")
-        cy.get(":nth-child(5) > .d-flex > span").should("have.text", "Compte")
+        cy.checkLangAfterChange('Français', 'Accueil', 'Entités', 'Compte')
     })
 
     it ('Check "Русский" switch to language in header', () => {
-        cy.get(":nth-child(4) > .d-flex > span").should("have.text", "English").click()
+        cy.checkText(":nth-child(4) > .d-flex > span","English").click()
         cy.get('[value="ru"]').click()
-        cy.get(":nth-child(4) > .d-flex > span").should("have.text", "Русский")
-        cy.get("#header-tabs > li:nth-child(1) > a > span > span").should("have.text","Главная")
-        cy.get('[data-cy="entity"] > .d-flex').should("have.text", "Сущности")
-        cy.get(":nth-child(5) > .d-flex > span").should("have.text", "Профиль")
+        cy.checkLangAfterChange('Русский', 'Главная', 'Сущности', 'Профиль')
     })
 
-    it('Check "Українська" switch to language in header', () => {
-        cy.get(":nth-child(4) > .d-flex > span").should("have.text", "English").click() 
+    it('Check "Українська" switch to language in header', () => { 
+        cy.checkText(":nth-child(4) > .d-flex > span","English").click()
         cy.get('[value="ua"]').click()
-        cy.get(":nth-child(4) > .d-flex > span").should("have.text", "Українська")
-        cy.get("#header-tabs > li:nth-child(1) > a > span > span").should("have.text","Головна")
-        cy.get('[data-cy="entity"] > .d-flex').should("have.text", "Сутності")
-        cy.get(":nth-child(5) > .d-flex > span").should("have.text", "Профіль")
+        cy.checkLangAfterChange('Українська', 'Головна', 'Сутності', 'Профіль')
     })
 
     it('Check "English" switch to language in header', () => {
@@ -79,26 +71,23 @@ describe('Header links for Student', () => {
         cy.get('[value="ru"]').click()
         cy.get(":nth-child(4) > .d-flex > span").click()
         cy.get('[value="en"]').click()
-        cy.get(":nth-child(4) > .d-flex > span").should("have.text", "English")
-        cy.get("#header-tabs > li:nth-child(1) > a > span > span").should("have.text","Home")
-        cy.get('[data-cy="entity"] > .d-flex').should("have.text", "Entities")
-        cy.get(":nth-child(5) > .d-flex > span").should("have.text", "Account")
+        cy.checkLangAfterChange('English', 'Home', 'Entities', 'Account')
     })
 
     it('Check "Account/Settings" link in header', () => {
-        cy.get(":nth-child(5) > .d-flex > span").should("have.text", "Account").click()
+        cy.checkText(":nth-child(5) > .d-flex > span","Account").click()
         cy.get('[data-cy="settings"]').click()
         cy.url().should("eq", Cypress.config().baseUrl + "account/settings")
     })
 
     it('Check "Account/Password" link in header', () => {
-        cy.get(":nth-child(5) > .d-flex > span").should("have.text", "Account").click()
+        cy.checkText(":nth-child(5) > .d-flex > span","Account").click()
         cy.get('[data-cy="passwordItem"]').click()
         cy.url().should("eq", Cypress.config().baseUrl + "account/password")
     })
 
     it('Check "Account/Sing out" link in header', () => {
-        cy.get(":nth-child(5) > .d-flex > span").should("have.text", "Account").click()
+        cy.checkText(":nth-child(5) > .d-flex > span","Account").click()
         cy.get('[data-cy="logout"]').click()
         cy.url().should("eq", Cypress.config().baseUrl + "logout")
     })

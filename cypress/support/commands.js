@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('checkText', (selector, text) => {
+    cy.get(selector).should("have.text", `${text}`);
+})
+
+Cypress.Commands.add('checkLangAfterChange', (langLang, homeLang, entityLang, profileLang) => { 
+    cy.checkText(":nth-child(4) > .d-flex > span",`${langLang}`);
+    cy.checkText("#header-tabs > li:nth-child(1) > a > span > span",`${homeLang}`);
+    cy.checkText('[data-cy="entity"] > .d-flex',`${entityLang}`);
+    cy.checkText(":nth-child(5) > .d-flex > span",`${profileLang}`);
+})
