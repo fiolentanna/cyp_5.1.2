@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe('Header links for Student', () => {
-    beforeEach(() => {
+    beforeEach("Login by student", () => {
         cy.visit("/")
         cy.get("#account-menu > a > span").click()
         cy.get("#login-item").click()
