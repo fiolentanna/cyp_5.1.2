@@ -34,3 +34,11 @@ Cypress.Commands.add('checkLangAfterChange', (langLang, homeLang, entityLang, pr
     cy.checkText('[data-cy="entity"] > .d-flex',`${entityLang}`);
     cy.checkText(":nth-child(5) > .d-flex > span",`${profileLang}`);
 })
+
+Cypress.Commands.add('enterText', (selector, text) => {
+    cy.get(selector).click().type(`${text}`).blur();
+})
+
+Cypress.Commands.add('checkEnterText', (selector, value) => {
+    cy.get(selector).should("have.value", `${value}`);
+})

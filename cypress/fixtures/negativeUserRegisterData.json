@@ -1,0 +1,86 @@
+[
+    {
+        "username": "user123",
+        "email": "test@example.com",
+        "password": "P1",
+        "passwordConfirm": "P1",
+        "expectedError": "Ошибка: password слишком короткий"
+    },
+    {
+        "username": "",
+        "email": "test@example.com",
+        "password": "P1344",
+        "passwordConfirm": "P1344",
+        "expectedError": "Ошибка: поле username не заполнено"
+    },
+    {
+        "username": "user123",
+        "email": "",
+        "password": "P1344",
+        "passwordConfirm": "P1344",
+        "expectedError": "Ошибка: поле email пустое"
+    },
+    {
+        "username": "user123",
+        "email": "",
+        "password": "P1344",
+        "passwordConfirm": "P1344",
+        "expectedError": "Ошибка: поле email пустое"
+    },
+    {
+        "username": "user123",
+        "email": "test@example.com",
+        "password": "",
+        "passwordConfirm": "P1344",
+        "expectedError": "Ошибка: поле password пустое"
+    },
+    {
+        "username": "user123",
+        "email": "test@example.com",
+        "password": "P1344",
+        "passwordConfirm": "",
+        "expectedError": "Ошибка: поле passwordConfirm пустое"
+    },
+    {
+        "username": "user123",
+        "email": "test@example.com",
+        "password": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "passwordConfirm": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "expectedError": "Ошибка: password слишком длинный"
+    },
+    {
+        "username": "012345678901234567890123456789012345678901234567890",
+        "email": "test@example.com",
+        "password": "Pass@123",
+        "passwordConfirm": "Pass@123",
+        "expectedError": "Ошибка: длина username превышена"
+    },
+    {
+        "username": "user!@#",
+        "email": "test@example.com",
+        "password": "Pass@123",
+        "passwordConfirm": "Pass@123",
+        "expectedError": "Ошибка: недопустимые символы в username"
+    },
+    {
+        "username": "user123",
+        "email": "test!example.com",
+        "password": "Pass@123",
+        "passwordConfirm": "Pass@123",
+        "expectedError": "Ошибка: некорректный формат email"
+    },
+    {
+        "username": " user123 ",
+        "email": "test@example.com",
+        "password": "Pass@123",
+        "passwordConfirm": "Pass@123",
+        "expectedError": "Ошибка: пробелы в начале/конце username"
+    },
+    {
+        "username": "user123",
+        "email": "test@example.com",
+        "password": "Pass@123",
+        "passwordConfirm": "Pass@123123678",
+        "expectedError": "Ошибка: пароль и подтверждающий пароль не совпадают"
+    }
+]

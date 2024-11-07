@@ -1,0 +1,47 @@
+[
+    {
+      "username": "student_cypress",
+      "password": "student_cypress111",
+      "error": "Failed to sign in!"
+    },
+    {
+      "username": "",
+      "password": "student_cypress",
+      "error": "Empty username"
+    },
+    {
+      "username": "student_cypress!!!",
+      "password": "student_cypress",
+      "error": "Failed to sign in!"
+    },
+    {
+      "username": "student_cypress",
+      "password": "",
+      "error": "Empty password"
+    },
+    {
+        "username": "student_cypress",
+        "password": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "error": "Password longer 50"
+    },
+    {
+        "username": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "password": "student_cypress",
+        "error": "Username longer 50"
+    },
+    {
+        "username": "~!@#$%^&*()?>,./\\<][ /*<!–",
+        "password": "student_cypress",
+        "error": "Invalid special characters in username"
+    },
+    {
+        "username": " student_cypress ",
+        "password": "student_cypress",
+        "error": "Spaces in username field"
+    },
+    {
+        "username": "student_cypress",
+        "password": " student_cypress ",
+        "error": "Spaces in password field"
+    }
+  ]

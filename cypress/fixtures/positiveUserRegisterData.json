@@ -1,0 +1,56 @@
+[
+    {
+        "username": "user",
+        "email": "test@example.com",
+        "password": "Pass1234",
+        "passwordConfirm": "Pass1234"
+    },
+    {
+        "username": "01234567890123456789012345678901234567890123456789",
+        "email": "Test@example.com",
+        "password": "Pass@1234",
+        "passwordConfirm": "Pass@1234"
+    },
+    {
+        "username": "USER123",
+        "email": "test@example.com",
+        "password": "p@ssW0rd",
+        "passwordConfirm": "p@ssW0rd"
+    },
+    {
+        "username": "user123USER",
+        "email": "Test@Example.Com",
+        "password": "PaSS1234!",
+        "passwordConfirm": "PaSS1234!"
+    },
+    {
+        "username": "username",
+        "email": "test@example.com",
+        "password": "!@#%^&*()",
+        "passwordConfirm": "!@#%^&*()"
+    },
+    {
+        "username": "user123",
+        "email": "test@example.com",
+        "password": "Pass 1234!",
+        "passwordConfirm": "Pass 1234!"
+    },
+    {
+        "username": "user123",
+        "email": "test@example.com",
+        "password": "p@ssW0RD",
+        "passwordConfirm": "p@ssW0RD"
+    },
+    {
+        "username": "USERNAME",
+        "email": "TEST@EXAMPLE.COM",
+        "password": "Pass@123",
+        "passwordConfirm": "Pass@123"
+    },
+    {
+        "username": "User@123",
+        "email": "test@example.com",
+        "password": "PaSsWoRd123",
+        "passwordConfirm": "PaSsWoRd123"
+    }
+]
