@@ -1,34 +1,30 @@
-/// <reference types="cypress" />
 const positiveTestData = require("../../fixtures/positiveUserRegisterData.json");
 const negativeTestData = require("../../fixtures/negativeUserRegisterData.json");
-
-const usernameField = '[data-cy="username"]';
-const emailField = '[data-cy="email"]';
-const firstPasswordField = '[data-cy="firstPassword"]';
-const confirmPasswordField = '[data-cy="secondPassword"]';
-const submitButton = '[data-cy="submit"]';
+const registerPageSelectors = require("../../fixtures/registerPageSelectors.json");
+const headerButtonsSelectors = require("../../fixtures/headerButtonsSelectors.json");
 
 describe("Register new user positive and negative", () => {
   beforeEach("Go to registration", () => {
     cy.visit("/");
-    cy.get("#account-menu > a > span").click();
-    cy.get('[data-cy="register"]').click();
+    cy.get(headerButtonsSelectors.accountButton).click();
+    cy.get(headerButtonsSelectors.registerButton).click();
   });
 
   it("Check a valid formats registrations", () => {
     positiveTestData.forEach((item) => {
-        cy.enterText(usernameField, item.username); // Вводим текст из тестовых данных
-        cy.checkEnterText(usernameField, item.username); // Проверяем, что значение введено корректно
+        cy.enterText(registerPageSelectors.usernameField, item.username); // Вводим текст из тестовых данных
+        cy.checkEnterText(registerPageSelectors.usernameField, item.username); // Проверяем, что значение введено корректно
 
-        cy.enterText(emailField, item.email); // Вводим текст из тестовых данных
-        cy.checkEnterText(emailField, item.email); // Проверяем, что значение введено корректно
+        cy.enterText(registerPageSelectors.emailField, item.email); // Вводим текст из тестовых данных
+        cy.checkEnterText(registerPageSelectors.emailField, item.email); // Проверяем, что значение введено корректно
 
-        cy.enterText(firstPasswordField, item.password); // Вводим текст из тестовых данных
-        cy.checkEnterText(firstPasswordField, item.password); // Проверяем, что значение введено корректно
+        cy.enterText(registerPageSelectors.firstPasswordField, item.password); // Вводим текст из тестовых данных
+        cy.checkEnterText(registerPageSelectors.firstPasswordField, item.password); // Проверяем, что значение введено корректно
 
-        cy.enterText(confirmPasswordField, item.passwordConfirm); // Вводим текст из тестовых данных
-        cy.checkEnterText(confirmPasswordField,item.passwordConfirm); // Проверяем, что значение введено корректно
+        cy.enterText(registerPageSelectors.confirmPasswordField, item.passwordConfirm); // Вводим текст из тестовых данных
+        cy.checkEnterText(registerPageSelectors.confirmPasswordField,item.passwordConfirm); // Проверяем, что значение введено корректно
         
+        cy.get(registerPageSelectors.submitButton).click();
 
        cy.reload(); // Перезагружаем страницу после каждой проверки
      });
@@ -44,28 +40,28 @@ describe("Register new user positive and negative", () => {
         let isPasswordConfirmEmpty = !item.passwordConfirm;
 
         if (item.username) {
-            cy.enterText(usernameField, item.username); // Вводим текст из тестовых данных
-            cy.checkEnterText(usernameField, item.username); // Проверяем, что значение введено корректно
+            cy.enterText(registerPageSelectors.usernameField, item.username); // Вводим текст из тестовых данных
+            cy.checkEnterText(registerPageSelectors.usernameField, item.username); // Проверяем, что значение введено корректно
         }
 
         // Вводим пароль, если он не пустой
         if (item.password) {
-            cy.enterText(firstPasswordField, item.password); // Вводим текст из тестовых данных
-            cy.checkEnterText(firstPasswordField, item.password); // Проверяем, что значение введено корректно
+            cy.enterText(registerPageSelectors.firstPasswordField, item.password); // Вводим текст из тестовых данных
+            cy.checkEnterText(registerPageSelectors.firstPasswordField, item.password); // Проверяем, что значение введено корректно
         }
 
         if(item.email) {
-            cy.enterText(emailField, item.email);
-            cy.checkEnterText(emailField, item.email);
+            cy.enterText(registerPageSelectors.emailField, item.email);
+            cy.checkEnterText(registerPageSelectors.emailField, item.email);
         }
 
         if(item.passwordConfirm) {
-            cy.enterText(confirmPasswordField, item.passwordConfirm);
-            cy.checkEnterText(confirmPasswordField, item.passwordConfirm);
+            cy.enterText(registerPageSelectors.confirmPasswordField, item.passwordConfirm);
+            cy.checkEnterText(registerPageSelectors.confirmPasswordField, item.passwordConfirm);
         }
         
         // Клик по кнопке регистрации
-        cy.get(submitButton).click();
+        cy.get(registerPageSelectors.submitButton).click();
 
         // Проверяем, что на странице появился элемент с классом "invalid-feedback"
         if (!item.username || !item.email || !item.password || !item.passwordConfirm) {

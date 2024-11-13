@@ -1,26 +1,25 @@
 const positiveTestData = require("../../fixtures/positiveUserLoginData.json");
 const negativeTestData = require("../../fixtures/negativeUserLoginData.json");
+const loginPageSelectors = require("../../fixtures/loginPageSelectors.json");
+const headerButtonsSelectors = require("../../fixtures/headerButtonsSelectors.json");
 
-const usernameField = '[data-cy="username"]';
-const passwordField = '[data-cy="password"]';
-const submitButton = '[data-cy="submit"]';
 
 describe("Sign-in form testing", () => {
     beforeEach("Go to sign-in form", () => {
         cy.visit("/");
-        cy.get("#account-menu > a > span").click();
-        cy.get("#login-item").click();
+        cy.get(headerButtonsSelectors.accountButton).click();
+        cy.get(headerButtonsSelectors.signInButton).click();
     });
 
     it("Successful user login", () => {
         positiveTestData.forEach((item) => {
-            cy.enterText(usernameField, item.username); // Вводим текст из тестовых данных
-            cy.checkEnterText(usernameField, item.username); // Проверяем, что значение введено корректно
+            cy.enterText(loginPageSelectors.usernameField, item.username); // Вводим текст из тестовых данных
+            cy.checkEnterText(loginPageSelectors.usernameField, item.username); // Проверяем, что значение введено корректно
       
-            cy.enterText(passwordField, item.password); // Вводим текст из тестовых данных
-            cy.checkEnterText(passwordField, item.password); // Проверяем, что значение введено корректно
+            cy.enterText(loginPageSelectors.passwordField, item.password); // Вводим текст из тестовых данных
+            cy.checkEnterText(loginPageSelectors.passwordField, item.password); // Проверяем, что значение введено корректно
 
-            cy.get(submitButton).click();
+            cy.get(loginPageSelectors.submitButton).click();
             cy.url().should("eq", Cypress.config().baseUrl + "?page=1&sort=id,asc")
         });
     });
@@ -33,18 +32,18 @@ describe("Sign-in form testing", () => {
     
             // Вводим имя пользователя, если оно не пустое
             if (item.username) {
-                cy.enterText(usernameField, item.username); // Вводим текст из тестовых данных
-                cy.checkEnterText(usernameField, item.username); // Проверяем, что значение введено корректно
+                cy.enterText(loginPageSelectors.usernameField, item.username); // Вводим текст из тестовых данных
+                cy.checkEnterText(loginPageSelectors.usernameField, item.username); // Проверяем, что значение введено корректно
             }
     
             // Вводим пароль, если он не пустой
             if (item.password) {
-                cy.enterText(passwordField, item.password); // Вводим текст из тестовых данных
-                cy.checkEnterText(passwordField, item.password); // Проверяем, что значение введено корректно
+                cy.enterText(loginPageSelectors.passwordField, item.password); // Вводим текст из тестовых данных
+                cy.checkEnterText(loginPageSelectors.passwordField, item.password); // Проверяем, что значение введено корректно
             }
     
             // Нажимаем кнопку отправки формы
-            cy.get(submitButton).click();
+            cy.get(loginPageSelectors.submitButton).click();
     
             // Проверяем наличие ошибки в зависимости от пустоты полей
             if (isUsernameEmpty || isPasswordEmpty) {
