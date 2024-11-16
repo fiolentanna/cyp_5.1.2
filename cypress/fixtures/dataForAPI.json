@@ -1,0 +1,22 @@
+{
+    "studentLogin": "anna_password_change2",
+    "studentEmail": "anna_password_change2@test.ru",
+    "studentpPassword": "kjhuYTfd7",
+    "teacherLogin": "teacher123",
+    "teacherPassword": "teacher123",
+    "adminLogin": "admin_automation",
+    "adminPassword": "admin_automation",
+    "emptyLogin": "",
+    "emptyEmail": "",
+    "emptyPassword": "",
+    "loginMore50": "012345678901234567890123456789012345678901234567890",
+    "emptyLangKey": "",
+    "langKeyLess2": "r",
+    "LangKeyNumber": "11",
+    "rememberMeTrue": true,
+    "rememberMeFalse": false,
+    "loginNotActive": "not_active_login",
+    "passwordNotActive": "not_active_password",
+    "emptyRememberMe": "",
+    "langKey": "en"
+}

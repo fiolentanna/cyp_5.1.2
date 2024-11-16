@@ -3,12 +3,12 @@ export class ChangePasswordPage {
         currentPasswordField: () => cy.get('#currentPassword'),
         newPasswordField: () => cy.get('#newPassword'),
         passwordConfirmField: () => cy.get('#confirmPassword'),
-        saveButoon: () => cy.get('[data-cy="submit"]'),
+        saveButton: () => cy.get('[data-cy="submit"]'),
     }
     changePassword(password, newPassword) {
         this.elements.currentPasswordField().type(password);
         this.elements.newPasswordField().type(newPassword);
         this.elements.passwordConfirmField().type(newPassword);
-        this.elements.saveButoon().click();
+        this.elements.saveButton().click();
     }
 }
